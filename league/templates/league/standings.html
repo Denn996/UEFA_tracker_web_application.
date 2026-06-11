@@ -1,0 +1,37 @@
+{% extends 'league/base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col text-center">
+        <h1 class="display-5 fw-bold text-dark">🏆 UEFA Champions League</h1>
+        <p class="text-muted">Simulated Group Stage Standings</p>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0 text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" style="width: 10%;">Pos</th>
+                    <th scope="col" class="text-start" style="width: 40%;">Club</th>
+                    <th scope="col">Pts</th>
+                    <th scope="col">GF</th>
+                    <th scope="col">GA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td class="text-start fw-bold fs-5">{{ team.name }}</td>
+                    <td class="text-primary fw-bold fs-5">{{ team.points }}</td>
+                    <td>{{ team.goals_for }}</td>
+                    <td>{{ team.goals_against }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+# === Python Files ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+.pytest_cache/
+
+# === Django Environments & Secrets ===
+.env
+.secrets
+db.sqlite3
+staticfiles/
+
+# === Virtual Environments (Linux/Windows) ===
+venv/
+.venv/
+env/
+ENV/
+bin/
+include/
+lib/
+share/
+
+# === IDE Configurations ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# === Operating System Files ===
+.DS_Store
+Thumbs.db

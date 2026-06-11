@@ -1,0 +1,52 @@
+{% extends 'league/base.html' %} {% block content %}
+<div style="max-width: 700px; margin: 20px auto; font-family: sans-serif; padding: 0 15px;">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="font-size: 2.5em; color: #111; margin-bottom: 5px; display: inline-flex; align-items: center; gap: 10px;">
+            ⚽ Season Results
+        </h1>
+        <p style="color: #666; font-size: 1em; margin: 0;">Full 19-Matchday Round-Robin Tournament Schedule</p>
+    </div>
+
+    {% if error %}
+        <div style="background-color: #ffe6e6; color: #cc0000; padding: 15px; border-radius: 6px; border: 1px solid #ffb3b3; text-align: center; font-weight: bold; margin-top: 20px;">
+            ⚠️ {{ error }}
+        </div>
+    {% else %}
+        
+        {% for matchday, matches in schedule.items %}
+            <details style="background: #f9f9f9; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                
+                <summary style="font-weight: bold; font-size: 1.15em; cursor: pointer; color: #1a1a1a; padding: 5px; outline: none;">
+                    📅 {{ matchday }} <span style="font-weight: normal; color: #666; font-size: 0.85em; margin-left: 10px;">(10 Fixtures)</span>
+                </summary>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px; padding: 5px 0;">
+                    
+                    {% for match in matches %}
+                        <div style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 12px 15px; border-radius: 6px; border: 1px solid #eee;">
+                            
+                            <div style="flex: 1; text-align: right; font-weight: bold; padding-right: 15px; color: #333;">
+                                {{ match.home_team }}
+                            </div>
+                            
+                            <div style="background: #1a1a1a; color: white; padding: 6px 14px; border-radius: 4px; text-align: center; min-width: 85px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <span style="font-weight: bold; font-size: 1.1em; letter-spacing: 2px;">
+                                    {{ match.home_score }} - {{ match.away_score }}
+                                </span>
+                                <br>
+                                <small style="font-size: 0.75em; color: #ccc; margin-top: 4px; display: block;">
+                                    {{ match.status }}
+                                </small>
+                            </div>
+                            
+                            <div style="flex: 1; text-align: left; font-weight: bold; padding-left: 15px; color: #333;">
+                                {{ match.away_team }}
+                            </div>
+                            
+                        </div>
+                    {% endfor %} </div>
+            </details>
+        {% endfor %} {% endif %}
+</div>
+{% endblock %}

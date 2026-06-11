@@ -1,0 +1,14 @@
+{% extends 'league/base.html' %}
+
+{% block content %}
+<h2>log out</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <button class="btn btn-outline-light" type="submit">Log Out</button>
+</form>
+
+<p>logged out successfully.<a href="{% url 'login' %}"><button class="btn btn-outline-light">Log In again</button></a></p>
+
+{% endblock %}
